@@ -1,9 +1,9 @@
 <template>
   <main v-if="!loading">
-    show Data
+  <DataTitle :text="title" :dataDate="dataDate"/>
   </main>
-  <main class="flex-col align-center justify-center text-center" v-else>
- <div class ="text-grey-500 text-3xl mt-10 mb-6">
+  <main class="flex flex-col align-center justify-center text-center" v-else>
+ <div class ="text-gray-500 text-3xl mt-10 mb-6">
    Fetching data
  </div>
  <img :src="loadingImage" class="w-24 m-auto" alt=""/>
@@ -11,18 +11,21 @@
 </template>
 
 <script>
-
+import DataTitle from '@/components/DataTitle'
+// import DataTitle from '../components/DataTitle.vue'
 export default {
   name: 'Home',
-  components: {  },
-  data() {
+  components: { 
+    DataTitle
+   },
+    DataTitle() {
     return {
-      loading : true,
-      title : 'Clobal',
-      dataDate : '',
-      stats : {},
-      countries : [],
-      loadingImage : require('../assets/hourglass.gif')
+      loading:true,
+      title:'Clobal',
+      dataDate:'',
+      stats:{},
+      countries:[],
+      loadingImage:require('../assets/hourglass.gif')
     }
     },
   methods:{
